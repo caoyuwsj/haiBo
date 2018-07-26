@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "525FD0958431D52F2F1DFE0998F5787C4891BA35",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "525FD0958431D52F2F1DFE0998F5787C4891BA35" : 9223372036854775807,
+    "160ADBF48E7A83D03D97CEBA615987FFB541568E" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8729CC41-0ED7-4B11-B000-CB68DF044230",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "525FD0958431D52F2F1DFE0998F5787C4891BA35" : "ParkingSpace\/",
+    "160ADBF48E7A83D03D97CEBA615987FFB541568E" : "ParkingSpace\/ParkingSpace\/LSRootNavigationController\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ParkingSpace",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ParkingSpace.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Arthur-Coding\/LSRootNavigationController.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "160ADBF48E7A83D03D97CEBA615987FFB541568E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Arthur-Coding\/ParkingSpace.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "525FD0958431D52F2F1DFE0998F5787C4891BA35"
+    }
+  ]
+}
