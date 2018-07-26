@@ -1,0 +1,56 @@
+/* 
+  Language.strings
+  ParkingSpace
+
+  Created by 小细菌 on 2018/7/22.
+  Copyright © 2018年 ArthurShuai. All rights reserved.
+*/
+"Login" = "Login";
+
+//tabBar
+"首页" = "Home";
+"寻找车位" = "Find";
+"服务" = "Service";
+"我的" = "Mine";
+
+//我的
+"登录注册" = " Login/Regist ";
+
+//设置
+"SetingVcTitle" = "Setting";
+"countSafe" = "Accout safe";
+"提醒设置" = "Reminder settings";
+"多语言" = "Language";
+"用户指南" = "User guide";
+"关于我们" = "About us";
+"版本号" = "Version";
+"退出登录" = "Quit";
+
+
+//账号与安全
+"手机号码" = "Phone number";
+"绑定邮箱" = "Bind mailbox";
+"未绑定" = "no binding";
+"实名认证" = "Personal verified";
+"修改支付密码" = "Change password";
+
+
+//提醒设置
+"新消息提醒" = "new message remind";
+"新消息通知" = "new message notification";
+"声音" = "voice";
+"震动" = "vibration";
+
+"闹钟提醒" = "Alarm reminder";
+"接受闹钟提醒" = "open Alarm reminder";
+"提醒时间" = "remind time";
+"最后15分钟" = "last 15 min";
+"最后20分钟" = "last 20 min";
+"最后10分钟" = "last 10 min";
+"最后5分钟" = "last 5 min";
+
+//首页
+"个人" = "Per";
+"商业" = "Bus";
+"公共" = "Pub";
+"您还未进行实名认证，点我快速认证" = "You have not real verified, click to auth";
