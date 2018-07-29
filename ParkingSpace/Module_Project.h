@@ -10,9 +10,12 @@
 
 #ifndef Module_Project_h
 #define Module_Project_h
+#import "HPBaseCardView.h"
 #import "HPBaseViewController.h"
 #import "HPBaseTableViewViewController.h"
-#import "HPBaseCardView.h"
+
+#import "HPBaseCardCell.h"
+
 #import "ToolHeader.h"
 #import "HPBaseAltActionViewController.h"
 #import "HPNetWorking.h"

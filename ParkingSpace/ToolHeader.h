@@ -13,6 +13,7 @@
 
 #import "User.h"
 #import "MyButton.h"
+#import "NSDate+Category.h"
 #import "NSString+Trims.h"
 #import "NSString+method.h"
 #import "UIButton+CountDown.h"

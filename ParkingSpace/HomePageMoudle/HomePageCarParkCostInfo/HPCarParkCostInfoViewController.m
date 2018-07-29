@@ -20,9 +20,9 @@
     [super viewDidLoad];
     
     self.title = @"停车详情";
+    self.navigationController.navigationBar.hidden = NO;
     
-    [self setNavBarBackItemWithImageName:@"返回按钮"];
-    
+
     [self.tableView reloadData];
 }
 
@@ -77,6 +77,11 @@
     return footer;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 8;
+}
+
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == 4)
@@ -89,14 +94,27 @@
             header.textLabel.font = kFontSize(18);
             header.textLabel.textAlignment = NSTextAlignmentCenter;
             header.textLabel.textColor = [UIColor colorWithHexString:@"#333333"];
-            header.textLabel.text = @"消费明细";
+            
             
         }
+        header.textLabel.text = @"消费明细";
         return header;
     }
     else
     {
         return nil;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        return 56;
+    }
+    else
+    {
+        return 50;
     }
 }
 
@@ -115,9 +133,10 @@
     cell.textLabel.textColor = [UIColor colorWithHexString:@"#333333"];
     if (indexPath.section == 0 && indexPath.row == 0)
     {
-        cell.imageView.image = [UIImage imageNamed:@"Logo"];
+        cell.imageView.image = [UIImage imageNamed:@"logo"];
         cell.textLabel.text = @"嗨泊停车";
                 cell.textLabel.font = kFontSize(20);
+        cell.detailTextLabel.text = nil;
         return cell;
     }
     
@@ -224,7 +243,6 @@
             cell.detailTextLabel.text = nil;
         }
     
-        
     }
     
     

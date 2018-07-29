@@ -9,6 +9,7 @@
 // 通用型警告卡片  默认带有 上部标题，上左按钮，上右按钮 下部操作按钮。响应事件重写方法就OK
 
 #import "HPBaseViewController.h"
+#import "HPBaseCardView.h"
 #define topMagin 8
 #define leftMagin 8
 #define topBtnWidth 32

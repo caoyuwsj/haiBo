@@ -8,6 +8,7 @@
 
 #import "HPParkCostDetailViewController.h"
 #import "HPParkUserIngViewController.h"
+#import "HPCarParkCostInfoViewController.h"
 
 @interface HPParkCostDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -17,6 +18,8 @@
 @property (nonatomic, strong) UIImageView * sucessImageView;;
 @property (nonatomic, strong) UILabel * sucessLabel;
 @property (nonatomic, strong) UILabel * addressLabel;
+
+
 
 @property (nonatomic, strong) UITableView * tableView;
 
@@ -279,14 +282,18 @@
 -(void)topRightBtnActon:(UIButton *)sender
 {
     
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:kBeginDate];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     [self dismissViewControllerAnimated:NO completion:^{
-//        HPParkUserIngViewController * bindcarVc = [HPParkUserIngViewController new];
-//        bindcarVc.view.backgroundColor=[UIColor colorWithWhite:0 alpha:0.4];
-//        //关键语句，必须有
-//        bindcarVc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-//        [kAppDelegate.maintabBar presentViewController:bindcarVc animated:NO completion:^{
-//            bindcarVc.view.superview.backgroundColor = [UIColor clearColor];
-//        }];
+        HPParkUserIngViewController * bindcarVc = [HPParkUserIngViewController new];
+        bindcarVc.view.backgroundColor=[UIColor colorWithWhite:0 alpha:0.0];
+        //关键语句，必须有
+        bindcarVc.delegate = kAppDelegate.maintabBar.homePageVc;
+        bindcarVc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        [kAppDelegate.maintabBar presentViewController:bindcarVc animated:NO completion:^{
+            bindcarVc.view.superview.backgroundColor = [UIColor clearColor];
+        }];
     }];
     
     

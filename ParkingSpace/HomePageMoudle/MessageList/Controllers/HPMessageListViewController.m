@@ -7,6 +7,8 @@
 //
 
 #import "HPMessageListViewController.h"
+#import "HPSJMessageListTableViewCell.h"
+#import "HPMessageInfoListViewController.h"
 
 @interface HPMessageListViewController ()
 
@@ -17,9 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"消息中心";
-    self.tableView .separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.tableView .separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView reloadData];
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F5F8FC"];
 }
+
+
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -27,33 +33,39 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 56;
+    return 60;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    HPSJMessageListTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"HPSJMessageListTableViewCell"];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"UITableViewCell"];
+        cell = [[HPSJMessageListTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"HPSJMessageListTableViewCell"];
     }
     if(indexPath.row == 0)
     {
-        cell.textLabel.text = @"消息通知";
+        cell.titleLabel.text = @"消息通知";
     }
     else if (indexPath.row == 1)
     {
-        cell.textLabel.text = @"交易通知";
+        cell.titleLabel.text = @"交易通知";
     }
     else if (indexPath.row == 2)
     {
-        cell.textLabel.text = @"活动通知";
+        cell.titleLabel.text = @"活动通知";
     }
-    cell.separatorInset = UIEdgeInsetsMake(0, 16, 0, 16);
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.countLabel.text = @"3";
+    
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HPMessageInfoListViewController * infoVc = [HPMessageInfoListViewController new];
+    infoVc.title = @"交易通知";
+    [self.navigationController pushViewController:infoVc animated:YES];
+}
 
 
 @end

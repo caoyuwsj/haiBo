@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <LSRootNavigationController/LSRootNavigationController.h>
 
 @interface HPBaseViewController : UIViewController
 

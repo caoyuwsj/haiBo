@@ -22,6 +22,11 @@
 		042987312100EF75003A765E /* HPHomeCarNumerSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042987302100EF75003A765E /* HPHomeCarNumerSelectViewController.m */; };
 		042987342100F163003A765E /* HPCarNumberSelectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042987332100F163003A765E /* HPCarNumberSelectCollectionViewCell.m */; };
 		042987382100F564003A765E /* HPParkCostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042987372100F564003A765E /* HPParkCostDetailViewController.m */; };
+		0438E7E4210C0C110070301E /* MMScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0438E7E1210C0C110070301E /* MMScanView.m */; };
+		0438E7E5210C0C110070301E /* MMScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0438E7E3210C0C110070301E /* MMScanViewController.m */; };
+		04470A2D210DD115009FDE28 /* HPBaseCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04470A2C210DD115009FDE28 /* HPBaseCardCell.m */; };
+		04470A30210DFD97009FDE28 /* HPMessageInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04470A2F210DFD97009FDE28 /* HPMessageInfoListViewController.m */; };
+		04470A33210DFDE6009FDE28 /* HPMessageInfoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04470A32210DFDE6009FDE28 /* HPMessageInfoListTableViewCell.m */; };
 		04516FFF21022C9100DBA6CC /* HPBaseBaiduMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04516FFE21022C9100DBA6CC /* HPBaseBaiduMapViewController.m */; };
 		0451700021022D4B00DBA6CC /* HPHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04516FFC21022C7F00DBA6CC /* HPHomePageViewController.m */; };
 		045170032102300400DBA6CC /* HPMeeasgeItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045170022102300400DBA6CC /* HPMeeasgeItemView.m */; };
@@ -139,7 +144,6 @@
 		A38C7E8320FF044E00CC8836 /* HPBasePoiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A38C7E8120FF044E00CC8836 /* HPBasePoiModel.m */; };
 		A38C7E8A20FF045B00CC8836 /* HPBaseAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A38C7E8520FF045B00CC8836 /* HPBaseAnnotation.m */; };
 		A38C7E8C20FF045B00CC8836 /* HPPaoPaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A38C7E8920FF045B00CC8836 /* HPPaoPaoView.m */; };
-		A38C7E9320FF04EB00CC8836 /* QRScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38C7E9020FF04EB00CC8836 /* QRScanViewController.m */; };
 		A38C7EA620FF052B00CC8836 /* HPHomePageInputParkNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38C7EA120FF052B00CC8836 /* HPHomePageInputParkNumberViewController.m */; };
 		A38C7EA720FF052B00CC8836 /* HPHomePageInputParkNumberActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A38C7EA520FF052B00CC8836 /* HPHomePageInputParkNumberActionView.m */; };
 		A3C54421210085A20033401B /* HPBaseCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C5441F210085A10033401B /* HPBaseCardView.m */; };
@@ -187,6 +191,18 @@
 		042987332100F163003A765E /* HPCarNumberSelectCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPCarNumberSelectCollectionViewCell.m; sourceTree = "<group>"; };
 		042987362100F564003A765E /* HPParkCostDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPParkCostDetailViewController.h; sourceTree = "<group>"; };
 		042987372100F564003A765E /* HPParkCostDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPParkCostDetailViewController.m; sourceTree = "<group>"; };
+		0438E7E0210C0C100070301E /* MMScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMScanViewController.h; sourceTree = "<group>"; };
+		0438E7E1210C0C110070301E /* MMScanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMScanView.m; sourceTree = "<group>"; };
+		0438E7E2210C0C110070301E /* MMScanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMScanView.h; sourceTree = "<group>"; };
+		0438E7E3210C0C110070301E /* MMScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMScanViewController.m; sourceTree = "<group>"; };
+		04470A29210D6A60009FDE28 /* NSDate+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Category.m"; sourceTree = "<group>"; };
+		04470A2A210D6A61009FDE28 /* NSDate+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Category.h"; sourceTree = "<group>"; };
+		04470A2B210DD115009FDE28 /* HPBaseCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPBaseCardCell.h; sourceTree = "<group>"; };
+		04470A2C210DD115009FDE28 /* HPBaseCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPBaseCardCell.m; sourceTree = "<group>"; };
+		04470A2E210DFD97009FDE28 /* HPMessageInfoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPMessageInfoListViewController.h; sourceTree = "<group>"; };
+		04470A2F210DFD97009FDE28 /* HPMessageInfoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPMessageInfoListViewController.m; sourceTree = "<group>"; };
+		04470A31210DFDE6009FDE28 /* HPMessageInfoListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPMessageInfoListTableViewCell.h; sourceTree = "<group>"; };
+		04470A32210DFDE6009FDE28 /* HPMessageInfoListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPMessageInfoListTableViewCell.m; sourceTree = "<group>"; };
 		04516FFB21022C7F00DBA6CC /* HPHomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPHomePageViewController.h; sourceTree = "<group>"; };
 		04516FFC21022C7F00DBA6CC /* HPHomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPHomePageViewController.m; sourceTree = "<group>"; };
 		04516FFD21022C9100DBA6CC /* HPBaseBaiduMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPBaseBaiduMapViewController.h; sourceTree = "<group>"; };
@@ -407,8 +423,6 @@
 		A38C7E8720FF045B00CC8836 /* HPPaoPaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPPaoPaoView.h; sourceTree = "<group>"; };
 		A38C7E8820FF045B00CC8836 /* HPBaseAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPBaseAnnotationView.m; sourceTree = "<group>"; };
 		A38C7E8920FF045B00CC8836 /* HPPaoPaoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPPaoPaoView.m; sourceTree = "<group>"; };
-		A38C7E8F20FF04EB00CC8836 /* QRScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
-		A38C7E9020FF04EB00CC8836 /* QRScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
 		A38C7EA020FF052B00CC8836 /* HPHomePageInputParkNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPHomePageInputParkNumberViewController.h; sourceTree = "<group>"; };
 		A38C7EA120FF052B00CC8836 /* HPHomePageInputParkNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPHomePageInputParkNumberViewController.m; sourceTree = "<group>"; };
 		A38C7EA420FF052B00CC8836 /* HPHomePageInputParkNumberActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPHomePageInputParkNumberActionView.h; sourceTree = "<group>"; };
@@ -674,6 +688,8 @@
 			children = (
 				042568CE20FCF23900B6EEE8 /* HPMessageListViewController.h */,
 				042568CD20FCF23900B6EEE8 /* HPMessageListViewController.m */,
+				04470A2E210DFD97009FDE28 /* HPMessageInfoListViewController.h */,
+				04470A2F210DFD97009FDE28 /* HPMessageInfoListViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -683,6 +699,8 @@
 			children = (
 				042568D020FCF23900B6EEE8 /* HPSJMessageListTableViewCell.m */,
 				042568D120FCF23900B6EEE8 /* HPSJMessageListTableViewCell.h */,
+				04470A31210DFDE6009FDE28 /* HPMessageInfoListTableViewCell.h */,
+				04470A32210DFDE6009FDE28 /* HPMessageInfoListTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -705,6 +723,15 @@
 				042987372100F564003A765E /* HPParkCostDetailViewController.m */,
 			);
 			path = HomePageParkCostDetail;
+			sourceTree = "<group>";
+		};
+		04470A28210D6A49009FDE28 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				04470A2A210D6A61009FDE28 /* NSDate+Category.h */,
+				04470A29210D6A60009FDE28 /* NSDate+Category.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		045170042102391A00DBA6CC /* HomePageParkUserIng */ = {
@@ -734,6 +761,8 @@
 				A3C5441F210085A10033401B /* HPBaseCardView.m */,
 				049E5D3820FF8B3100A0267B /* ShadowElevations */,
 				049E5D3320FF8B3100A0267B /* ShadowLayer */,
+				04470A2B210DD115009FDE28 /* HPBaseCardCell.h */,
+				04470A2C210DD115009FDE28 /* HPBaseCardCell.m */,
 			);
 			path = BaseViews;
 			sourceTree = "<group>";
@@ -1120,6 +1149,7 @@
 		9F6792F620EB49F500270225 /* Tool工具类 */ = {
 			isa = PBXGroup;
 			children = (
+				04470A28210D6A49009FDE28 /* Category */,
 				9F90333A20F5AA4A00BF1F09 /* ToolHeader.h */,
 				9F11BBE2210826400065D5D9 /* HYBUnicodeReadable */,
 				9F0ED73821038983008C2989 /* Toast */,
@@ -1383,8 +1413,8 @@
 		A38C7E8E20FF04EB00CC8836 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A38C7E8F20FF04EB00CC8836 /* QRScanViewController.h */,
-				A38C7E9020FF04EB00CC8836 /* QRScanViewController.m */,
+				0438E7E0210C0C100070301E /* MMScanViewController.h */,
+				0438E7E3210C0C110070301E /* MMScanViewController.m */,
 				A3C5442A210099C50033401B /* HPHomePageScanOverTimeViewController.h */,
 				A3C5442B210099C50033401B /* HPHomePageScanOverTimeViewController.m */,
 			);
@@ -1436,6 +1466,8 @@
 		A3C5442221008E2C0033401B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0438E7E2210C0C110070301E /* MMScanView.h */,
+				0438E7E1210C0C110070301E /* MMScanView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1671,10 +1703,12 @@
 				9FA97AD420FEE5F500203F1C /* GXBaseViewController.m in Sources */,
 				042568C720FCF14F00B6EEE8 /* HPSJSySActionView.m in Sources */,
 				9F50092520FF7B0900852FF6 /* CGXPickerView.m in Sources */,
+				04470A2D210DD115009FDE28 /* HPBaseCardCell.m in Sources */,
 				042568C820FCF14F00B6EEE8 /* HPBaseViewController.m in Sources */,
 				0451700E21024D4600DBA6CC /* HPCarParkCostInfoViewController.m in Sources */,
 				9FA97AE120FF23AB00203F1C /* JPullTableViewCell.m in Sources */,
 				A38C7E8320FF044E00CC8836 /* HPBasePoiModel.m in Sources */,
+				04470A30210DFD97009FDE28 /* HPMessageInfoListViewController.m in Sources */,
 				A38C7E8C20FF045B00CC8836 /* HPPaoPaoView.m in Sources */,
 				042568C920FCF14F00B6EEE8 /* HPBaseTableViewViewController.m in Sources */,
 				9F50092B20FF7B5100852FF6 /* AdviceViewController.m in Sources */,
@@ -1703,6 +1737,7 @@
 				9FE7BA1120F0C909003D93C1 /* AccountDetailTableViewController.m in Sources */,
 				A3C544302100B0210033401B /* HPHomePageAdveriseViewController.m in Sources */,
 				9F3430382102D9FD00B32450 /* ContactViewController.m in Sources */,
+				0438E7E5210C0C110070301E /* MMScanViewController.m in Sources */,
 				9F6BAA692101934B00B3D39D /* ChangePhoneViewController.m in Sources */,
 				A38C7E8A20FF045B00CC8836 /* HPBaseAnnotation.m in Sources */,
 				A38C7EA720FF052B00CC8836 /* HPHomePageInputParkNumberActionView.m in Sources */,
@@ -1733,10 +1768,10 @@
 				A3C544372100BDF10033401B /* UIDevice+FCUUID.m in Sources */,
 				9F50090A20FF6EED00852FF6 /* GXBaseTableViewController.m in Sources */,
 				9F50092720FF7B0900852FF6 /* CGXStringPickerView.m in Sources */,
-				A38C7E9320FF04EB00CC8836 /* QRScanViewController.m in Sources */,
 				A3C544362100BDF10033401B /* FCUUID.m in Sources */,
 				9F50092020FF7B0900852FF6 /* CGXAddressModel.m in Sources */,
 				9F6BAA5C210185AE00B3D39D /* BasicInfoTableViewController.m in Sources */,
+				0438E7E4210C0C110070301E /* MMScanView.m in Sources */,
 				9F90335120F5D69000BF1F09 /* UIButton+CountDown.m in Sources */,
 				9F6BAA6E2101EFBF00B3D39D /* AcountSafeTableViewController.m in Sources */,
 				049E5D4520FF93AD00A0267B /* HPDriverCertifyAltView.m in Sources */,
@@ -1750,6 +1785,7 @@
 				A3603B4D2101EB7B001BCDDB /* HPGoogleMapView.m in Sources */,
 				9FE7BA0A20F0BF0B003D93C1 /* MyWalletViewController.m in Sources */,
 				9F67930320EB4B2600270225 /* AdvertiseHelper.m in Sources */,
+				04470A33210DFDE6009FDE28 /* HPMessageInfoListTableViewCell.m in Sources */,
 				9F50092820FF7B0900852FF6 /* NSDate+CGXPicker.m in Sources */,
 				9F90335020F5D69000BF1F09 /* MJCountDownButton.m in Sources */,
 				9F90335220F5D69000BF1F09 /* UIImage+Color.m in Sources */,

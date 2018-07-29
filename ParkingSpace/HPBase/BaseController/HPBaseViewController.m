@@ -94,7 +94,14 @@
         if (imageName.length > 0)
         {
             UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageName] style:UIBarButtonItemStylePlain target:self action:@selector(backBarItemAction:)];
+            [rightItem setImageInsets:UIEdgeInsetsMake(0, 16, 0, 0)];
             self.navigationItem.backBarButtonItem = rightItem;
+            //更改返回按钮填充颜色
+            self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
+            
+            //隐藏默认的返回箭头
+            self.navigationController.navigationBar.backIndicatorImage = [UIImage new];
+            self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage new];
         }
         else
         {

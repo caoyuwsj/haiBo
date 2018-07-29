@@ -7,17 +7,10 @@
 //
 
 #import "SJMainTabBarViewController.h"
-#import "HPHomePageViewController.h"
-#import "HPSJFindParkPageViewController.h"
-#import "HPSJServicePageViewController.h"
 
 @interface SJMainTabBarViewController ()
 
-@property (nonatomic, strong) HPHomePageViewController * homePageVc;
-@property (nonatomic, strong) HPSJFindParkPageViewController * finParkVc;
-@property (nonatomic, strong) HPSJServicePageViewController * serviceVc;
 
-@property (nonatomic, strong) LSRootNavigationController* mine;
 
 @end
 
@@ -51,11 +44,11 @@
     selectImg = [selectImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.homePageVc.tabBarItem.selectedImage = selectImg;
 
-    UINavigationController * homeNav = [[UINavigationController alloc] initWithRootViewController:self.homePageVc];
+    LSRootNavigationController * homeNav = [[LSRootNavigationController alloc] initWithRootViewController:self.homePageVc];
 
 //    homeNav.transferNavigationBarAttributes = YES;
-//    homeNav.navigationBar.barTintColor = [UIColor colorWithHexString:@"#FCDE11"];
-    homeNav.navigationBar.barTintColor = [UIColor whiteColor];
+    homeNav.navigationBar.barTintColor = [UIColor colorWithHexString:@"#FCDE11"];
+//    homeNav.navigationBar.barTintColor = [UIColor whiteColor];
 
     self.finParkVc = [HPSJFindParkPageViewController new];
     self.finParkVc.tabBarItem.selectedImage = [UIImage imageNamed:@"寻找车位"];

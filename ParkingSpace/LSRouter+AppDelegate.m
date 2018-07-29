@@ -49,11 +49,11 @@
     [GMSServices provideAPIKey:googleMapKey];
 
 //    //进入注册页面
-    [self enterRegister];
+//    [self enterRegister];
 //
 
     //进入主Tab页面
-//    [self enterMainView];
+    [self enterMainView];
     //启动广告（记得放最后，才可以盖在页面上面）
 //    [self setupAdveriseView];
 }

@@ -17,7 +17,13 @@
 {
     if (_tableView == nil)
     {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64 ) style:UITableViewStyleGrouped];
+        CGFloat y = 0;
+//        if (self.navigationController && !self.navigationController.navigationBar.hidden)
+//        {
+//            y = 64;
+//        }
+        
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, y, SCREEN_WIDTH, SCREEN_HEIGHT  ) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.sectionFooterHeight = 0.0;

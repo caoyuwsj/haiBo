@@ -10,7 +10,7 @@
 #import "HPSJSySActionView.h"
 #import "HPSJBaiduMapView.h"
 #import "HPSJVerticalSegmenView.h"
-#import "QRScanViewController.h"
+#import "MMScanViewController.h"
 #import "HPHomePageInputParkNumberViewController.h"
 #import "HPMessageListViewController.h"
 #import "HPDriverCertifyAltView.h"
@@ -20,10 +20,12 @@
 #import "VerifyViewController.h"
 #import "HPGoogleMapView.h"
 #import "HPParkCostDetailViewController.h"
+#import "HPCarParkCostInfoViewController.h"
 
 
 
-@interface HPHomePageViewController ()<HPSJVerticalSegmenViewDelegate,HPSJSySActionViewDelegate,HPDriverCertifyAltViewDelegate,GoogleMapViewPaoPaoViewDelagate,BaiduMapViewPaoPaoViewDelagate>
+
+@interface HPHomePageViewController ()<HPSJVerticalSegmenViewDelegate,HPSJSySActionViewDelegate,HPDriverCertifyAltViewDelegate,GoogleMapViewPaoPaoViewDelagate,BaiduMapViewPaoPaoViewDelagate,MMScanViewControllerDelegate>
 
 @property (nonatomic, strong) HPSJSySActionView * sysActionView;
 
@@ -49,7 +51,7 @@
 {
     if (!_googleMapView)
     {
-        _googleMapView = [[HPGoogleMapView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kTabBarHeight)];
+        _googleMapView = [[HPGoogleMapView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kTabBarHeight-100)];
         _googleMapView.paopaoDeleagte = self;
     }
     return _googleMapView;
@@ -59,7 +61,7 @@
 {
     if (!_baiduMapView)
     {
-        _baiduMapView = [[HPBaseBaiduMapViewController alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kTabBarHeight)];
+        _baiduMapView = [[HPBaseBaiduMapViewController alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kTabBarHeight-100)];
         _baiduMapView.paopaoDelegate = self;
         
     }
@@ -113,28 +115,28 @@
 {
     [super viewDidAppear:animated];
 //    [self presentToBindingCarNumverVc];
-    self.navigationController.navigationBar.hidden = YES;
+//    self.navigationController.navigationBar.hidden = YES;
 
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self setMessageRightItem];
-//    [self.view addSubview:self.sysActionView];
-//    [_sysActionView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.view).offset(-49);
-//        make.left.right.equalTo(self.view);
-//        make.height.equalTo(@(180));
-//    }];
+    [self setMessageRightItem];
+    [self.view addSubview:self.sysActionView];
+    [_sysActionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-49);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(@(180));
+    }];
 
     [self setUpMapView];
     
-//    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 56 - 56, 22)];
-//    self.searchBar.searchBarStyle = UISearchBarStyleDefault;
-//    self.searchBar.placeholder = @"请输入您的目的地";
-//    self.navigationItem.titleView  = self.searchBar;
-//
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 56 - 56, 22)];
+    self.searchBar.searchBarStyle = UISearchBarStyleDefault;
+    self.searchBar.placeholder = @"请输入您的目的地";
+    self.navigationItem.titleView  = self.searchBar;
+
 
     [self.view addSubview:self.curentLocationBtn];
     [self.curentLocationBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -156,7 +158,8 @@
     }];
 //    [self getData];
     
-    self.ls_navigationController.navigationBar.hidden = YES;
+//    self.ls_navigationController.navigationBar.hidden = YES;
+    [self.view bringSubviewToFront:self.sysActionView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localLanguageChanged:) name:ChangeLang object:nil];
     
@@ -182,6 +185,7 @@
 {
     HPMessageListViewController * messageListVc = [HPMessageListViewController new];
     messageListVc.hidesBottomBarWhenPushed = YES;
+//    [self setNavBarBackItemWithImageName:@"返回按钮"];
     [self.navigationController pushViewController:messageListVc animated:YES];
 }
 #pragma mark - 获取数据
@@ -216,7 +220,9 @@
 - (void)HPSJSySActionView:(HPSJSySActionView *)view scanBtnClick:(UIButton *)sender
 {
 
-    QRScanViewController * scanVc = [QRScanViewController new];
+    MMScanViewController * scanVc = [[MMScanViewController alloc] initWithQrType:0 onFinish:^(NSString *result, NSError *error) {
+        [self presentToParkDetailVc];
+    }];
     scanVc.delegate = self;
     [kAppDelegate.maintabBar presentViewController:scanVc animated:YES completion:^{
 
@@ -224,13 +230,13 @@
 }
 #pragma mark - 扫码结果
 //扫码结果
-- (void)qrScanResult:(NSString *)result viewController:(QRScanViewController *)qrScanVC
+- (void)qrScanResult:(NSString *)result viewController:(MMScanViewController *)qrScanVC
 {
 
 }
 #pragma mark - 手动输入
 //手动输入
-- (void)qrScanInputBtnClick:(UIButton *)btn viewController:(QRScanViewController *)qrScanVC
+- (void)qrScanInputBtnClick:(UIButton *)btn viewController:(MMScanViewController *)qrScanVC
 {
     HPHomePageInputParkNumberViewController * inputVc = [HPHomePageInputParkNumberViewController new];
     inputVc.view.backgroundColor=[UIColor colorWithWhite:0 alpha:0.001];
@@ -397,6 +403,7 @@
     [self.typeSegment localLanguageChangedToRefreshUI];
     [self.altView localLanguageChangedToRefreshUI];
 
+    [self.view bringSubviewToFront:self.sysActionView];
     [self.view bringSubviewToFront:self.curentLocationBtn];
     [self.view bringSubviewToFront:self.bigSegment];
     [self.view bringSubviewToFront:self.typeSegment];
@@ -410,9 +417,46 @@
     bindcarVc.view.backgroundColor=[UIColor lightGrayColor];
     //关键语句，必须有
     bindcarVc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    [kAppDelegate.maintabBar presentViewController:bindcarVc animated:NO completion:^{
+    
+    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:bindcarVc];
+    bindcarVc.navigationController.navigationBar.hidden = YES;
+    
+    [kAppDelegate.maintabBar presentViewController:nav animated:NO completion:^{
         bindcarVc.view.superview.backgroundColor = [UIColor clearColor];
 
+    }];
+}
+
+#pragma mark - 使用计时下拉
+- (void)HPParkUserIngViewController:(HPParkUserIngViewController *)viewController panchDownAction:(UIButton *)sender
+{
+    self.sysActionView.isInUsing  =YES;
+    
+}
+#pragma mark - 结束使用
+-(void)HPParkUserIngViewController:(HPParkUserIngViewController *)viewController finishedUseBtnAction:(UIButton *)sender
+{
+    self.sysActionView.isInUsing = NO;
+    
+    HPCarParkCostInfoViewController *carCostInfo = [HPCarParkCostInfoViewController new];
+    
+    carCostInfo.hidesBottomBarWhenPushed = YES;
+    carCostInfo.navigationController.navigationBar.hidden = NO;
+    carCostInfo.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+    [self setNavBarBackItemWithImageName:@"返回按钮"];
+    [self.navigationController pushViewController:carCostInfo animated:YES];
+    
+}
+
+#pragma mark - 使用计时上拉
+- (void)HPSJSySActionView:(HPSJSySActionView *)view panchUpBtnClick:(UIButton *)sender
+{
+    HPParkUserIngViewController * bindcarVc = [HPParkUserIngViewController new];
+    bindcarVc.view.backgroundColor=[UIColor colorWithWhite:0 alpha:0.0];
+    //关键语句，必须有
+    bindcarVc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [kAppDelegate.maintabBar presentViewController:bindcarVc animated:NO completion:^{
+        bindcarVc.view.superview.backgroundColor = [UIColor clearColor];
     }];
 }
 

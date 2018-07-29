@@ -7,7 +7,8 @@
 //
 
 #import "HPBaseViewController.h"
+#import "HPParkUserIngViewController.h"
 
-@interface HPHomePageViewController : HPBaseViewController
+@interface HPHomePageViewController : HPBaseViewController<HPParkUserIngViewControllerDelegate>
 
 @end

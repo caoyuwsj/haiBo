@@ -43,23 +43,23 @@
     
     //设置登录按钮
     
-    NSDictionary* dic = @{@"sid" : USER.sid};
-    [GXNetWorking gxPostWithUrl:API_GetPersonalInfo mustParameters:dic success:^(BOOL succeed , NSString*msg , NSString* code ,id obj){
-        //[User sharedInstance]
-        if (succeed) {
-            USER.person = [PersonalInfo mj_objectWithKeyValues:obj];
-            self.userName.text = USER.person.nickname;
-            [self.imgHead setImageURL:[NSURL URLWithString:USER.person.avatar]];
-            if (USER.person.iscertification.integerValue == 0) {
-                [self setUnVerifyStyle];
-            }else{
-                
-            }
-            
-        }else{
-            TOAST(msg);
-        }
-    } viewController:self];
+//    NSDictionary* dic = @{@"sid" : USER.sid};
+//    [GXNetWorking gxPostWithUrl:API_GetPersonalInfo mustParameters:dic success:^(BOOL succeed , NSString*msg , NSString* code ,id obj){
+//        //[User sharedInstance]
+//        if (succeed) {
+//            USER.person = [PersonalInfo mj_objectWithKeyValues:obj];
+//            self.userName.text = USER.person.nickname;
+//            [self.imgHead setImageURL:[NSURL URLWithString:USER.person.avatar]];
+//            if (USER.person.iscertification.integerValue == 0) {
+//                [self setUnVerifyStyle];
+//            }else{
+//
+//            }
+//
+//        }else{
+//            TOAST(msg);
+//        }
+//    } viewController:self];
 }
 
 -(NSArray*)titleArray

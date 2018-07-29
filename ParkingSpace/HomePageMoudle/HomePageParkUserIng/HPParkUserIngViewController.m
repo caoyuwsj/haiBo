@@ -23,9 +23,17 @@
 @property (nonatomic, strong) UILabel  * parkingLastCostTtleLabel;
 @property (nonatomic, strong) UILabel  * parkingLastCostLabel;
 
+@property (nonatomic, strong) UIButton * panchDownBtn;
+
 @property (nonatomic, strong) HPParkUseringMessageMoudleView * timeMoudleView;
 @property (nonatomic, strong) HPParkUseringMessageMoudleView * parkNumberView;
 @property (nonatomic, strong) HPParkUseringMessageMoudleView * carNumberView;
+
+@property (nonatomic, strong) NSTimer * time;
+
+@property (nonatomic, strong) NSString * hourStr;
+@property (nonatomic, strong) NSString * minStr;
+@property (nonatomic, strong) NSString * secStr;
 
 
 @property (nonatomic, strong) UIView * line1;
@@ -36,17 +44,85 @@
 
 @implementation HPParkUserIngViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.cardView.frame = CGRectMake(0, SCREEN_HEIGHT - 180 - 49, SCREEN_WIDTH, 500);
+    self.cardView.alpha = 0.0;
+    
+    self.time = [NSTimer scheduledTimerWithTimeInterval:1.0 block:^(NSTimer * _Nonnull timer) {
+    
+       [self setTimeContent];
+        
+    } repeats:YES];
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.cardView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.cardView.frame = CGRectMake(0, SCREEN_HEIGHT - 470, SCREEN_WIDTH, 500);
+            self.view.backgroundColor=[UIColor colorWithWhite:0 alpha:0.3];
+        } completion:^(BOOL finished) {
+            
+        }];
+    }];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+    [self setupSuViews];
+    
+   
+    [self setTimeContent];
+}
+
+-(void)setTimeContent
+{
+    if ([kGetBeginDate isKindOfClass:[NSDate class]])
+    {
+        NSDate * beginDate = kGetBeginDate;
+        NSTimeInterval ti = [[NSDate date] timeIntervalSinceDate:beginDate];
+        
+        long long time = ti;
+        
+        self.hourStr = time/3600 > 0 ? [NSString stringWithFormat:@"%02zd",time/3600] : @"00";
+        time = time % 3600;
+        self.minStr = time / 60 > 0 ? [NSString stringWithFormat:@"%02zd",time / 60] : @"00";
+        time = time % 60;
+        
+        self.secStr = time  > 0 ? [NSString stringWithFormat:@"%02zd",time ] : @"00";
+        self.parkingTimeLabel.text = [NSString stringWithFormat:@"%@:%@:%@",self.hourStr,self.minStr,self.secStr];
+    }
+}
+
+
+-(void)setupSuViews
+{
+    self.topTitleLabel.font = kFontSize(20);
+    self.topTitleLabel.textColor = [UIColor colorWithHexString:@"#333333"];
     self.topTitleLabel.text = @"恒丰财富港大厦停车场";
     self.cardView.cardBackView.layer.cornerRadius = 30.0;
     self.cardView.shadowLayer.cornerRadius = 30.0;
     self.bottomMiddleBtn.hidden = YES;
     
+    self.panchDownBtn = [UIButton new];
+    [self.panchDownBtn setImage:[UIImage imageNamed:@"下下三角"] forState:UIControlStateNormal];
+    [self.panchDownBtn addTarget:self action:@selector(panchDownBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.cardView addSubview:self.panchDownBtn];
+    
+    
+    
     self.yellCardView = [[HPBaseCardView alloc] initWithFrame:CGRectZero];
     self.yellCardView.cardBackView.backgroundColor = [UIColor colorWithHexString:@"#FAC02D"];
-    self.yellCardView.cardBackView.layer.cornerRadius = 4.0;
-    self.yellCardView.shadowLayer.cornerRadius = 4.0;
+    self.yellCardView.cardBackView.layer.cornerRadius = 12.0;
+    self.yellCardView.shadowLayer.cornerRadius = 12.0;
+    self.yellCardView.shadowLayer.elevation = 0.0;
     [self.cardView addSubview:self.yellCardView];
     
     self.parkingTitleLabel = [UILabel new];
@@ -143,8 +219,15 @@
     self.line3.backgroundColor = [UIColor colorWithHexString:@"#E5E5E5"];
     [self.cardView addSubview:self.line3];
     
+    [self.panchDownBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.cardView);
+        make.top.equalTo(self.topTitleLabel.mas_bottom).offset(4);
+        make.height.width.equalTo(@(24));
+    }];
+    
+    
     [self.yellCardView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.topTitleLabel.mas_bottom).offset(24);
+        make.top.equalTo(self.panchDownBtn.mas_bottom).offset(8);
         make.left.equalTo(self.cardView).offset(30);
         make.right.equalTo(self.cardView).offset(-30);
         make.height.equalTo(@(150));
@@ -222,7 +305,7 @@
     
     [self.line2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(1.5));
-        make.centerX.equalTo(self.cardView.mas_right).offset(-(SCREEN_WIDTH/3.0 - 0.75));
+        make.centerX.equalTo(self.cardView.mas_right).offset(-(SCREEN_WIDTH/3.0 - 0.75 + 10));
         make.height.equalTo(@(44));
         make.centerY.equalTo(self.timeMoudleView);
     }];
@@ -233,19 +316,14 @@
         make.width.equalTo(self.cardView);
     }];
     
-    
 }
+
 
 -(void)addCardViewContains
 {
     if (self.cardView)
     {
-        [self.cardView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.view).offset(30);
-            make.left.equalTo(self.view);
-            make.right.equalTo(self.view);
-            make.height.equalTo(@(500));
-        }];
+        self.cardView.frame = CGRectMake(0, SCREEN_HEIGHT - 180 - 49, SCREEN_WIDTH, 500);
     }
 }
 
@@ -269,7 +347,52 @@
     }];
 }
 
+-(void)panchDownBtnAction:(UIButton *)sender
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.cardView.frame = CGRectMake(0, SCREEN_HEIGHT - 180 - 49, SCREEN_WIDTH, 500);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.cardView.alpha = 0.0;
+            self.view.backgroundColor=[UIColor colorWithWhite:0 alpha:0.0];
+        } completion:^(BOOL finished) {
+            if ([self.delegate respondsToSelector:@selector(HPParkUserIngViewController:panchDownAction:)])
+            {
+                [self.delegate HPParkUserIngViewController:self panchDownAction:sender];
+            }
+            [self dismissViewControllerAnimated:NO completion:^{
+                
+            }];
+        }];
+    }];
+}
 
+
+-(void)topRightBtnActon:(UIButton *)sender
+{
+    [self.time invalidate];
+    self.time = nil;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.cardView.frame = CGRectMake(0, SCREEN_HEIGHT - 180 - 49, SCREEN_WIDTH, 500);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.cardView.alpha = 0.0;
+            self.view.backgroundColor=[UIColor colorWithWhite:0 alpha:0.0];
+        } completion:^(BOOL finished) {
+            if ([self.delegate respondsToSelector:@selector(HPParkUserIngViewController:finishedUseBtnAction:)])
+            {
+                [self.delegate HPParkUserIngViewController:self finishedUseBtnAction:sender];
+            }
+            [self dismissViewControllerAnimated:NO completion:^{
+                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kBeginDate];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }];
+        }];
+    }];
+    
+   
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

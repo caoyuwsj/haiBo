@@ -33,6 +33,13 @@ static NSString * const baiduMapKey = @"6j3ngd2Z3yCftiN4QYW8OW29AN9ZoAIg";
 
 #define   kGetUserKey  [[NSUserDefaults standardUserDefaults] objectForKey:kUserKey]
 
+/**
+ 扫码成功开始计费时间
+ */
+#define kBeginDate @"BeginDate"
+
+#define   kGetBeginDate  [[NSUserDefaults standardUserDefaults] objectForKey:kBeginDate]
+
 /*
     切换app语言发送通知 名字
  */

@@ -6,8 +6,14 @@
 //  Copyright © 2018年 mac. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "HPBaseCardCell.h"
 
-@interface HPSJMessageListTableViewCell : UITableViewCell
+@interface HPSJMessageListTableViewCell : HPBaseCardCell
+
+@property (nonatomic, strong) UIImageView * iconImage;
+@property (nonatomic, strong) UILabel * titleLabel;
+@property (nonatomic, strong) UILabel * countLabel;
+@property (nonatomic, strong) UIImageView * accIamge;
+
 
 @end
