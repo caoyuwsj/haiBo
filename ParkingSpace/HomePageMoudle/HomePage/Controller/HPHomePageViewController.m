@@ -168,7 +168,7 @@
 -(void)setUpMapView
 {
  
-    if (isChineseLanguage)
+    if (!isGoogleMap)
     {
         [self.view addSubview:self.baiduMapView];
     }
@@ -267,14 +267,14 @@
 //当前定位
 -(void)curentLocationBtnAction:(UIButton *)sender
 {
-
-    if (isChineseLanguage)
+    if (!isGoogleMap)
     {
         [self.baiduMapView.mapView setCenterCoordinate:self.baiduMapView.userLocation.location.coordinate animated:YES]; //当前地图的中心点
     }
     else
     {
-        self.googleMapView.googleMapView.camera = [[GMSCameraPosition alloc] initWithTarget:self.googleMapView.currentLocation.coordinate zoom:15 bearing:0 viewingAngle:0];
+        [self.googleMapView.googleMapView animateToCameraPosition:[[GMSCameraPosition alloc] initWithTarget:self.googleMapView.currentLocation.coordinate zoom:15 bearing:0 viewingAngle:0]];
+     
     }
 }
 #pragma mark - 实名认证
@@ -302,7 +302,7 @@
     if (segmentView == self.bigSegment)
     {
         CGFloat leavel = 0;
-        if (isChineseLanguage)
+        if (!isGoogleMap)
         {
             leavel = self.baiduMapView.mapView.zoomLevel;
         }
@@ -321,7 +321,7 @@
         {
             leavel --;
         }
-        if (isChineseLanguage)
+        if (!isGoogleMap)
         {
             [self.baiduMapView.mapView setZoomLevel:leavel];
         }
@@ -331,7 +331,8 @@
             
             GMSMutableCameraPosition * mutcam =  [[GMSMutableCameraPosition alloc] initWithTarget:position.target zoom:position.zoom bearing:position.bearing viewingAngle:position.viewingAngle];
              mutcam.zoom = leavel;
-            self.googleMapView.googleMapView.camera = mutcam;
+            
+            [self.googleMapView.googleMapView animateToCameraPosition:mutcam];
             self.googleMapView.currentZoom = leavel;
         }
     }
@@ -360,7 +361,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (isChineseLanguage)
+    if (!isGoogleMap)
     {
         [self.baiduMapView viewWillAppear];
     }
@@ -369,7 +370,7 @@
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (isChineseLanguage)
+    if (!isGoogleMap)
     {
         [self.baiduMapView viewDisAppear];
     }

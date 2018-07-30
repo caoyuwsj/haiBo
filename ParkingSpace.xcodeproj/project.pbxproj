@@ -41,6 +41,12 @@
 		04BBE59F20FE41D70028362F /* TDNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BBE59E20FE41D70028362F /* TDNoDataView.m */; };
 		04BBE5A220FE44CD0028362F /* UIViewController+SJNetWorkingLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BBE5A120FE44CD0028362F /* UIViewController+SJNetWorkingLoad.m */; };
 		04BBE5AC20FE46650028362F /* HPBindCarNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BBE5AB20FE46650028362F /* HPBindCarNumberViewController.m */; };
+		04F2E49D210F662F00A0536E /* HPFindParkCycleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2E49C210F662F00A0536E /* HPFindParkCycleCollectionViewCell.m */; };
+		04F2E4A0210F67DF00A0536E /* HPFindParkCycleCellMoudleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2E49F210F67DF00A0536E /* HPFindParkCycleCellMoudleView.m */; };
+		04F2E4A1210F717000A0536E /* TYCyclePagerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2E492210F63CA00A0536E /* TYCyclePagerViewCell.m */; };
+		04F2E4A2210F717100A0536E /* TYPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2E495210F63CA00A0536E /* TYPageControl.m */; };
+		04F2E4A3210F717100A0536E /* TYCyclePagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2E496210F63CA00A0536E /* TYCyclePagerView.m */; };
+		04F2E4A4210F717100A0536E /* TYCyclePagerTransformLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2E498210F63CA00A0536E /* TYCyclePagerTransformLayout.m */; };
 		060CC9DC1F738EE000F112D5 /* LSRouter+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 060CC9DB1F738EE000F112D5 /* LSRouter+Network.m */; };
 		06352ED51FFF9BAE00D17DFD /* LSRouter+AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06352ED41FFF9BAE00D17DFD /* LSRouter+AppDelegate.m */; };
 		069D5D051E680AFE004CEFF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 069D5D041E680AFE004CEFF6 /* main.m */; };
@@ -231,6 +237,18 @@
 		04BBE5A120FE44CD0028362F /* UIViewController+SJNetWorkingLoad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SJNetWorkingLoad.m"; sourceTree = "<group>"; };
 		04BBE5AA20FE46650028362F /* HPBindCarNumberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPBindCarNumberViewController.h; sourceTree = "<group>"; };
 		04BBE5AB20FE46650028362F /* HPBindCarNumberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPBindCarNumberViewController.m; sourceTree = "<group>"; };
+		04F2E492210F63CA00A0536E /* TYCyclePagerViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYCyclePagerViewCell.m; sourceTree = "<group>"; };
+		04F2E493210F63CA00A0536E /* TYCyclePagerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYCyclePagerView.h; sourceTree = "<group>"; };
+		04F2E494210F63CA00A0536E /* TYCyclePagerTransformLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYCyclePagerTransformLayout.h; sourceTree = "<group>"; };
+		04F2E495210F63CA00A0536E /* TYPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYPageControl.m; sourceTree = "<group>"; };
+		04F2E496210F63CA00A0536E /* TYCyclePagerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYCyclePagerView.m; sourceTree = "<group>"; };
+		04F2E497210F63CA00A0536E /* TYCyclePagerViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYCyclePagerViewCell.h; sourceTree = "<group>"; };
+		04F2E498210F63CA00A0536E /* TYCyclePagerTransformLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYCyclePagerTransformLayout.m; sourceTree = "<group>"; };
+		04F2E499210F63CA00A0536E /* TYPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYPageControl.h; sourceTree = "<group>"; };
+		04F2E49B210F662F00A0536E /* HPFindParkCycleCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPFindParkCycleCollectionViewCell.h; sourceTree = "<group>"; };
+		04F2E49C210F662F00A0536E /* HPFindParkCycleCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPFindParkCycleCollectionViewCell.m; sourceTree = "<group>"; };
+		04F2E49E210F67DF00A0536E /* HPFindParkCycleCellMoudleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPFindParkCycleCellMoudleView.h; sourceTree = "<group>"; };
+		04F2E49F210F67DF00A0536E /* HPFindParkCycleCellMoudleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPFindParkCycleCellMoudleView.m; sourceTree = "<group>"; };
 		060CC9DA1F738EE000F112D5 /* LSRouter+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LSRouter+Network.h"; sourceTree = "<group>"; };
 		060CC9DB1F738EE000F112D5 /* LSRouter+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LSRouter+Network.m"; sourceTree = "<group>"; };
 		062FA8231E7633B000B84E45 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -597,9 +615,9 @@
 		042568AD20FCEBB500B6EEE8 /* FindParkPage */ = {
 			isa = PBXGroup;
 			children = (
+				04F2E49A210F660200A0536E /* Views */,
 				042568AE20FCEBB500B6EEE8 /* Models */,
 				042568AF20FCEBB500B6EEE8 /* Controllers */,
-				042568B220FCEBB500B6EEE8 /* Views */,
 			);
 			path = FindParkPage;
 			sourceTree = "<group>";
@@ -618,13 +636,6 @@
 				042568B020FCEBB500B6EEE8 /* HPSJFindParkPageViewController.m */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		042568B220FCEBB500B6EEE8 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		042568B320FCEC6E00B6EEE8 /* HPBase */ = {
@@ -847,6 +858,40 @@
 		04BBE5A920FE461C0028362F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		04F2E490210F63B900A0536E /* ThirdLib */ = {
+			isa = PBXGroup;
+			children = (
+				04F2E491210F63CA00A0536E /* TYCyclePagerView */,
+			);
+			path = ThirdLib;
+			sourceTree = "<group>";
+		};
+		04F2E491210F63CA00A0536E /* TYCyclePagerView */ = {
+			isa = PBXGroup;
+			children = (
+				04F2E492210F63CA00A0536E /* TYCyclePagerViewCell.m */,
+				04F2E493210F63CA00A0536E /* TYCyclePagerView.h */,
+				04F2E494210F63CA00A0536E /* TYCyclePagerTransformLayout.h */,
+				04F2E495210F63CA00A0536E /* TYPageControl.m */,
+				04F2E496210F63CA00A0536E /* TYCyclePagerView.m */,
+				04F2E497210F63CA00A0536E /* TYCyclePagerViewCell.h */,
+				04F2E498210F63CA00A0536E /* TYCyclePagerTransformLayout.m */,
+				04F2E499210F63CA00A0536E /* TYPageControl.h */,
+			);
+			path = TYCyclePagerView;
+			sourceTree = "<group>";
+		};
+		04F2E49A210F660200A0536E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04F2E49B210F662F00A0536E /* HPFindParkCycleCollectionViewCell.h */,
+				04F2E49C210F662F00A0536E /* HPFindParkCycleCollectionViewCell.m */,
+				04F2E49E210F67DF00A0536E /* HPFindParkCycleCellMoudleView.h */,
+				04F2E49F210F67DF00A0536E /* HPFindParkCycleCellMoudleView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1149,6 +1194,7 @@
 		9F6792F620EB49F500270225 /* Tool工具类 */ = {
 			isa = PBXGroup;
 			children = (
+				04F2E490210F63B900A0536E /* ThirdLib */,
 				04470A28210D6A49009FDE28 /* Category */,
 				9F90333A20F5AA4A00BF1F09 /* ToolHeader.h */,
 				9F11BBE2210826400065D5D9 /* HYBUnicodeReadable */,
@@ -1680,8 +1726,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F2E4A1210F717000A0536E /* TYCyclePagerViewCell.m in Sources */,
+				04F2E4A2210F717100A0536E /* TYPageControl.m in Sources */,
+				04F2E4A3210F717100A0536E /* TYCyclePagerView.m in Sources */,
+				04F2E4A4210F717100A0536E /* TYCyclePagerTransformLayout.m in Sources */,
 				0451700021022D4B00DBA6CC /* HPHomePageViewController.m in Sources */,
 				049E5D4120FF8C3F00A0267B /* MDCShadowLayer.m in Sources */,
+				04F2E4A0210F67DF00A0536E /* HPFindParkCycleCellMoudleView.m in Sources */,
 				049E5D4220FF8C3F00A0267B /* HPTools.m in Sources */,
 				049E5D4020FF8C2E00A0267B /* MDCShadowElevations.m in Sources */,
 				9FA97AD920FF1D0D00203F1C /* HPBaseAnnotationView.m in Sources */,
@@ -1736,6 +1787,7 @@
 				9FA97AD720FF17D200203F1C /* LoginEmailViewController.m in Sources */,
 				9FE7BA1120F0C909003D93C1 /* AccountDetailTableViewController.m in Sources */,
 				A3C544302100B0210033401B /* HPHomePageAdveriseViewController.m in Sources */,
+				04F2E49D210F662F00A0536E /* HPFindParkCycleCollectionViewCell.m in Sources */,
 				9F3430382102D9FD00B32450 /* ContactViewController.m in Sources */,
 				0438E7E5210C0C110070301E /* MMScanViewController.m in Sources */,
 				9F6BAA692101934B00B3D39D /* ChangePhoneViewController.m in Sources */,

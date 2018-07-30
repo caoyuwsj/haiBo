@@ -131,10 +131,14 @@ static BOOL USE_SIMULATE = NO;
 
 #define kTabBarHeight (isIPhoneX ? 83 : 49)
 
-#define isChineseLanguage (!kGetLocalLang || [kGetLocalLang isEqualToString:@"zh_CN"])
+//地图切换宏
+#define isGoogleMap ([kGetLocalLang isEqualToString:@"en_US"])
 
 //封装了一个宏 用来方便输入文字--实际是文字对应的key
 #define CustomStr(key) [(AppDelegate *)[[UIApplication sharedApplication] delegate] showText:(key)]
+
+#define kTextColor_3 [UIColor colorWithHexString:@"#333333"]
+
 
 /*
  全局单例
