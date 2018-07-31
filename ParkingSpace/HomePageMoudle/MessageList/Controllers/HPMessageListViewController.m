@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"消息中心";
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
     self.tableView .separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView reloadData];
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F5F8FC"];

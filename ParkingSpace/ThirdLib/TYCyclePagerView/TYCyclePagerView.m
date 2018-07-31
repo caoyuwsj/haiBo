@@ -91,7 +91,7 @@ NS_INLINE TYIndexSection TYMakeIndexSection(NSInteger index, NSInteger section) 
 
 - (void)addCollectionView {
     TYCyclePagerTransformLayout *layout = [[TYCyclePagerTransformLayout alloc]init];
-    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180) collectionViewLayout:layout];
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) collectionViewLayout:layout];
     layout.delegate = _delegateFlags.applyTransformToAttributes ? self : nil;;
     collectionView.backgroundColor = [UIColor clearColor];
     collectionView.dataSource = self;

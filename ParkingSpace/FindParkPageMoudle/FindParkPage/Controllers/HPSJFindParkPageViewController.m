@@ -11,6 +11,7 @@
 #import "HPBaseBaiduMapViewController.h"
 #import "HPGoogleMapView.h"
 #import "HPFindParkCycleCollectionViewCell.h"
+#import "HPFindParkDetailInfoViewController.h"
 
 #import "TYCyclePagerView.h"
 @interface HPSJFindParkPageViewController ()<HPSJVerticalSegmenViewDelegate,GoogleMapViewPaoPaoViewDelagate,BaiduMapViewPaoPaoViewDelagate,TYCyclePagerViewDataSource,
@@ -242,6 +243,14 @@ TYCyclePagerViewDelegate>
 - (void)pagerView:(TYCyclePagerView *)pageView didScrollFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
     [self.pageFlowView removeTimer];
 }
+
+- (void)pagerView:(TYCyclePagerView *)pageView didSelectedItemCell:(__kindof UICollectionViewCell *)cell atIndex:(NSInteger)index
+{
+    HPFindParkDetailInfoViewController * detailVc = [HPFindParkDetailInfoViewController new];
+    detailVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailVc animated:YES];
+}
+
 #pragma mark - 必须实现,不然会崩溃,第三方没处理好 -By Royal
 -(void)pagerViewDidScroll:(TYCyclePagerView *)pageView
 {

@@ -105,7 +105,7 @@
 {
     if (_sysActionView == nil)
     {
-        _sysActionView = [[HPSJSySActionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 180 - 49, SCREEN_WIDTH, 180)];
+        _sysActionView = [[HPSJSySActionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT   - 180 - kTabBarHeight-kNavBarHeight , SCREEN_WIDTH, 180)];
         _sysActionView.delegate = self;
     }
     return _sysActionView;
@@ -125,7 +125,7 @@
     [self setMessageRightItem];
     [self.view addSubview:self.sysActionView];
     [_sysActionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset(-49);
+        make.bottom.equalTo(self.view).offset(-kTabBarHeight);
         make.left.right.equalTo(self.view);
         make.height.equalTo(@(180));
     }];
@@ -151,7 +151,7 @@
     [self.view addSubview:self.altView];
     
     [self.altView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(64 +15);
+        make.top.equalTo(self.view).offset(15);
         make.width.equalTo(@(SCREEN_WIDTH - 60));
         make.centerX.equalTo(self.view);
         make.height.equalTo(@(40));

@@ -130,7 +130,7 @@ static BOOL USE_SIMULATE = NO;
 #define isIPhoneX                  (SCREEN_HEIGHT == 812)
 
 #define kTabBarHeight (isIPhoneX ? 83 : 49)
-
+#define kNavBarHeight (isIPhoneX ? 88 : 64)
 //地图切换宏
 #define isGoogleMap ([kGetLocalLang isEqualToString:@"en_US"])
 

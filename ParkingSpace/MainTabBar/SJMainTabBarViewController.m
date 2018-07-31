@@ -46,6 +46,7 @@
 
     LSRootNavigationController * homeNav = [[LSRootNavigationController alloc] initWithRootViewController:self.homePageVc];
 
+    homeNav.navigationBar.translucent = NO;
 //    homeNav.transferNavigationBarAttributes = YES;
     homeNav.navigationBar.barTintColor = [UIColor colorWithHexString:@"#FCDE11"];
 //    homeNav.navigationBar.barTintColor = [UIColor whiteColor];
