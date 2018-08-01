@@ -138,8 +138,9 @@ static BOOL USE_SIMULATE = NO;
 #define CustomStr(key) [(AppDelegate *)[[UIApplication sharedApplication] delegate] showText:(key)]
 
 #define kTextColor_3 [UIColor colorWithHexString:@"#333333"]
-
-
+#define kTextColor_54 [UIColor colorWithWhite:0.54 alpha:1.0]
+#define kTextColor_9 [UIColor colorWithHexString:@"#999999"]
+#define kTextColor_27 [UIColor colorWithWhite:0.27 alpha:1.0]
 /*
  全局单例
  */

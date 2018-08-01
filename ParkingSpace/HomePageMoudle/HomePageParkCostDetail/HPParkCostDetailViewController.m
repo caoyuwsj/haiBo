@@ -301,7 +301,25 @@
 
 -(void)topLefttBtnActon:(UIButton *)sender
 {
-    [self dismissViewControllerAnimated:NO completion:^{
+    
+    UIAlertController * altVc = [UIAlertController alertControllerWithTitle:nil message:@"您确定要取消停车吗?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    UIAlertAction * sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:NO completion:^{
+            
+        }];
+    }];
+    
+    [altVc addAction:cancleAction];
+    [altVc addAction:sureAction];
+    [self presentViewController:altVc animated:YES completion:^{
+        
+    }];
+   
+//    [self dismissViewControllerAnimated:NO completion:^{
         //        HPParkUserIngViewController * bindcarVc = [HPParkUserIngViewController new];
         //        bindcarVc.view.backgroundColor=[UIColor colorWithWhite:0 alpha:0.4];
         //        //关键语句，必须有
@@ -309,7 +327,7 @@
         //        [kAppDelegate.maintabBar presentViewController:bindcarVc animated:NO completion:^{
         //            bindcarVc.view.superview.backgroundColor = [UIColor clearColor];
         //        }];
-    }];
+//    }];
 }
 
 

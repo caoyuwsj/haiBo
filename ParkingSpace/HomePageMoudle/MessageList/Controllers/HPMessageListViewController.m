@@ -16,10 +16,20 @@
 
 @implementation HPMessageListViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault]; self.navigationController.navigationBar.shadowImage = [UIImage new];
+    
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"消息中心";
-    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+   
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    self.navigationController.navigationBar.backItem.title = @"";
     self.tableView .separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView reloadData];
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F5F8FC"];

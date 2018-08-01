@@ -21,6 +21,8 @@
 #import "HPGoogleMapView.h"
 #import "HPParkCostDetailViewController.h"
 #import "HPCarParkCostInfoViewController.h"
+#import "HPHomeSearchBtn.h"
+#import "HPHomePageSearchViewController.h"
 
 
 
@@ -35,7 +37,7 @@
 @property (nonatomic, strong) HPBaseBaiduMapViewController * baiduMapView;
 @property (nonatomic, strong) HPGoogleMapView * googleMapView;
 
-@property (nonatomic, strong) UISearchBar * searchBar;
+@property (nonatomic, strong) HPHomeSearchBtn * searchBar;
 
 
 @property (nonatomic, strong) UIButton * curentLocationBtn;
@@ -132,9 +134,9 @@
 
     [self setUpMapView];
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 56 - 56, 22)];
-    self.searchBar.searchBarStyle = UISearchBarStyleDefault;
-    self.searchBar.placeholder = @"请输入您的目的地";
+    self.searchBar = [[HPHomeSearchBtn alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 56 - 16, 30)];
+    [self.searchBar addTarget:self action:@selector(searchBarClickAction:) forControlEvents:UIControlEventTouchUpInside];
+    
     self.navigationItem.titleView  = self.searchBar;
 
 
@@ -460,6 +462,11 @@
         bindcarVc.view.superview.backgroundColor = [UIColor clearColor];
     }];
 }
-
-
+#pragma mark - 搜索
+-(void)searchBarClickAction:(UIButton *)sender
+{
+    HPHomePageSearchViewController * search = [HPHomePageSearchViewController new];
+    search.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:search animated:YES];
+}
 @end
