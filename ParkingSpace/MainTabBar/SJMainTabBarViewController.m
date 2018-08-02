@@ -47,9 +47,8 @@
     LSRootNavigationController * homeNav = [[LSRootNavigationController alloc] initWithRootViewController:self.homePageVc];
 
     homeNav.navigationBar.translucent = NO;
-//    homeNav.transferNavigationBarAttributes = YES;
     homeNav.navigationBar.barTintColor = [UIColor colorWithHexString:@"#FCDE11"];
-//    homeNav.navigationBar.barTintColor = [UIColor whiteColor];
+
 
     self.finParkVc = [HPSJFindParkPageViewController new];
     self.finParkVc.tabBarItem.selectedImage = [UIImage imageNamed:@"寻找车位"];
@@ -74,7 +73,6 @@
     self.mine.title = CustomStr(@"我的");
     self.viewControllers = @[homeNav,findNav,seviceNav,mine];
 
-    
 }
 
 -(void)initNav:(LSRootNavigationController*)mine

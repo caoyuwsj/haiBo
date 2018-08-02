@@ -65,7 +65,7 @@
     {
         _baiduMapView = [[HPBaseBaiduMapViewController alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kTabBarHeight-100)];
         _baiduMapView.paopaoDelegate = self;
-        
+
     }
     return _baiduMapView;
 }
@@ -78,7 +78,7 @@
         _curentLocationBtn = [UIButton new];
         [_curentLocationBtn setBackgroundImage:[UIImage imageNamed:@"定位地图"] forState:UIControlStateNormal];
         [_curentLocationBtn addTarget:self action:@selector(curentLocationBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-        
+
     }
     return _curentLocationBtn;
 }
@@ -87,7 +87,12 @@
 {
     if (!_typeSegment)
     {
-        _typeSegment = [[HPSJVerticalSegmenView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 60, 130, 50, 150) actionTitleArray:@[CustomStr(@"个人"),CustomStr(@"商业"),CustomStr(@"公共")]];
+        CGFloat width = 50;
+        if (isIPhone4_5)
+        {
+            width = 40.0;
+        }
+        _typeSegment = [[HPSJVerticalSegmenView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - width - 10, 130, width, width* 3) actionTitleArray:@[CustomStr(@"个人"),CustomStr(@"商业"),CustomStr(@"公共")]];
         _typeSegment.delegate = self;
     }
     return _typeSegment;
@@ -97,7 +102,12 @@
 {
     if (!_bigSegment)
     {
-        _bigSegment = [[HPSJVerticalSegmenView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 60, 340, 50, 100) actionImageArray:@[@"加",@"减"]];
+        CGFloat width = 50;
+        if (isIPhone4_5)
+        {
+            width = 40.0;
+        }
+        _bigSegment = [[HPSJVerticalSegmenView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - width - 10, 340, width, width* 2) actionImageArray:@[@"加",@"减"]];
         _bigSegment.delegate = self;
     }
     return _bigSegment;
@@ -116,9 +126,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    [self presentToBindingCarNumverVc];
-//    self.navigationController.navigationBar.hidden = YES;
-
 }
 
 
@@ -126,50 +133,86 @@
     [super viewDidLoad];
     [self setMessageRightItem];
     [self.view addSubview:self.sysActionView];
+
+    [self setUpMapView];
+
+    self.searchBar = [[HPHomeSearchBtn alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 56 - 16, 30)];
+    [self.searchBar addTarget:self action:@selector(searchBarClickAction:) forControlEvents:UIControlEventTouchUpInside];
+
+    self.navigationItem.titleView  = self.searchBar;
+
+
+    [self.view addSubview:self.curentLocationBtn];
+
+
+    self.altView = [[HPDriverCertifyAltView alloc] init];
+    self.altView.delegate = self;
+
+    [self.view addSubview:self.altView];
+
+    [self.view bringSubviewToFront:self.sysActionView];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localLanguageChanged:) name:ChangeLang object:nil];
+
+
     [_sysActionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view).offset(-kTabBarHeight);
         make.left.right.equalTo(self.view);
         make.height.equalTo(@(180));
     }];
 
-    [self setUpMapView];
-    
-    self.searchBar = [[HPHomeSearchBtn alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 56 - 16, 30)];
-    [self.searchBar addTarget:self action:@selector(searchBarClickAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.titleView  = self.searchBar;
-
-
-    [self.view addSubview:self.curentLocationBtn];
     [self.curentLocationBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(16);
         make.width.height.equalTo(@(50));
         make.bottom.equalTo(self.bigSegment.mas_bottom);
     }];
-    
-    self.altView = [[HPDriverCertifyAltView alloc] init];
-    self.altView.delegate = self;
-    
-    [self.view addSubview:self.altView];
-    
+
     [self.altView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(15);
         make.width.equalTo(@(SCREEN_WIDTH - 60));
         make.centerX.equalTo(self.view);
         make.height.equalTo(@(40));
     }];
-//    [self getData];
-    
-//    self.ls_navigationController.navigationBar.hidden = YES;
-    [self.view bringSubviewToFront:self.sysActionView];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localLanguageChanged:) name:ChangeLang object:nil];
-    
-    
+
+    if (isIPhone4_5)
+    {
+        [self.bigSegment mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.sysActionView.mas_bottom);
+            make.left.equalTo(self.view).offset(-10);
+            make.height.equalTo(@(40*2));
+            make.width.equalTo(@(40));
+        }];
+
+        [self.typeSegment mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.bigSegment.mas_top).offset(-20);
+            make.left.equalTo(self.view).offset(-10);
+            make.height.equalTo(@(40*3));
+            make.width.equalTo(@(40));
+        }];
+    }
+    else
+    {
+
+        [self.bigSegment mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.sysActionView.mas_bottom);
+            make.left.equalTo(self.view).offset(-10);
+            make.height.equalTo(@(50*2));
+            make.width.equalTo(@(50));
+        }];
+
+        [self.typeSegment mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.bigSegment.mas_top).offset(-20);
+            make.left.equalTo(self.view).offset(-10);
+            make.height.equalTo(@(50*3));
+            make.width.equalTo(@(50));
+        }];
+    }
+
+
 }
 -(void)setUpMapView
 {
- 
+
     if (!isGoogleMap)
     {
         [self.view addSubview:self.baiduMapView];
@@ -180,14 +223,14 @@
     }
     [self.view addSubview:self.typeSegment];
     [self.view addSubview:self.bigSegment];
-    
+
 }
 
 -(void)rightBarItemAction:(UIBarButtonItem *)sender
 {
     HPMessageListViewController * messageListVc = [HPMessageListViewController new];
     messageListVc.hidesBottomBarWhenPushed = YES;
-//    [self setNavBarBackItemWithImageName:@"返回按钮"];
+    //    [self setNavBarBackItemWithImageName:@"返回按钮"];
     [self.navigationController pushViewController:messageListVc animated:YES];
 }
 #pragma mark - 获取数据
@@ -211,7 +254,7 @@
     } fail:^(NSError *error) {
 
     } viewController:self ForMethod:NetworkRequestMethodTypeGetData nodataViewAddInSuperView:self.view];
-    
+
 
 }
 
@@ -276,7 +319,7 @@
     else
     {
         [self.googleMapView.googleMapView animateToCameraPosition:[[GMSCameraPosition alloc] initWithTarget:self.googleMapView.currentLocation.coordinate zoom:15 bearing:0 viewingAngle:0]];
-     
+
     }
 }
 #pragma mark - 实名认证
@@ -284,17 +327,17 @@
 
 -(void)certifyAltViewAction:(HPDriverCertifyAltView *)altView
 {
-//    [self presentToBindingCarNumverVc];
+    //    [self presentToBindingCarNumverVc];
     UIStoryboard *loginStoryboard=[UIStoryboard storyboardWithName:@"Login" bundle:nil];
     UIViewController* verVC = [loginStoryboard instantiateViewControllerWithIdentifier:@"RealNameTableViewController"];
-    
- 
-//    VerifyViewController * verVC= [VerifyViewController new];
+
+
+    //    VerifyViewController * verVC= [VerifyViewController new];
     verVC.hidesBottomBarWhenPushed = YES;
     self.navigationController.navigationBar.hidden = NO;
     [self.navigationController pushViewController:verVC animated:YES];
-    
-    
+
+
 }
 
 #pragma mark - 地图放大缩小
@@ -311,7 +354,7 @@
         else
         {
             GMSCameraPosition * position = self.googleMapView.googleMapView.camera;
-            
+
             GMSMutableCameraPosition * mutcam =  [[GMSMutableCameraPosition alloc] initWithTarget:position.target zoom:position.zoom bearing:position.bearing viewingAngle:position.viewingAngle];
             leavel = mutcam.zoom;
         }
@@ -330,10 +373,10 @@
         else
         {
             GMSCameraPosition * position = self.googleMapView.googleMapView.camera;
-            
+
             GMSMutableCameraPosition * mutcam =  [[GMSMutableCameraPosition alloc] initWithTarget:position.target zoom:position.zoom bearing:position.bearing viewingAngle:position.viewingAngle];
-             mutcam.zoom = leavel;
-            
+            mutcam.zoom = leavel;
+
             [self.googleMapView.googleMapView animateToCameraPosition:mutcam];
             self.googleMapView.currentZoom = leavel;
         }
@@ -356,7 +399,7 @@
 {
     HPMeeasgeItemView * itemView = [[HPMeeasgeItemView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [itemView addTarget:self action:@selector(rightBarItemAction:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:itemView];
 }
 
@@ -420,10 +463,10 @@
     bindcarVc.view.backgroundColor=[UIColor lightGrayColor];
     //关键语句，必须有
     bindcarVc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    
+
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:bindcarVc];
     bindcarVc.navigationController.navigationBar.hidden = YES;
-    
+
     [kAppDelegate.maintabBar presentViewController:nav animated:NO completion:^{
         bindcarVc.view.superview.backgroundColor = [UIColor clearColor];
 
@@ -434,21 +477,21 @@
 - (void)HPParkUserIngViewController:(HPParkUserIngViewController *)viewController panchDownAction:(UIButton *)sender
 {
     self.sysActionView.isInUsing  =YES;
-    
+
 }
 #pragma mark - 结束使用
 -(void)HPParkUserIngViewController:(HPParkUserIngViewController *)viewController finishedUseBtnAction:(UIButton *)sender
 {
     self.sysActionView.isInUsing = NO;
-    
+
     HPCarParkCostInfoViewController *carCostInfo = [HPCarParkCostInfoViewController new];
-    
+
     carCostInfo.hidesBottomBarWhenPushed = YES;
     carCostInfo.navigationController.navigationBar.hidden = NO;
     carCostInfo.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     [self setNavBarBackItemWithImageName:@"返回按钮"];
     [self.navigationController pushViewController:carCostInfo animated:YES];
-    
+
 }
 
 #pragma mark - 使用计时上拉

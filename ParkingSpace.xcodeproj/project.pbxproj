@@ -1482,7 +1482,6 @@
 			children = (
 				A3C5442221008E2C0033401B /* Views */,
 				A38C7E8E20FF04EB00CC8836 /* Controllers */,
-				A38C7E9120FF04EB00CC8836 /* Models */,
 			);
 			path = HomePageScan;
 			sourceTree = "<group>";
@@ -1496,13 +1495,6 @@
 				A3C5442B210099C50033401B /* HPHomePageScanOverTimeViewController.m */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		A38C7E9120FF04EB00CC8836 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		A38C7E9E20FF052B00CC8836 /* HomePageInputParkNumber */ = {
