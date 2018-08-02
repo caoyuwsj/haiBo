@@ -27,6 +27,7 @@
     {
         _inPutActionView = [[HPHomePageInputParkNumberActionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - actionViewHeight - 50, SCREEN_WIDTH, actionViewHeight + 50)];
         self.actionViewOrgY = SCREEN_HEIGHT - actionViewHeight - 50;
+        _inPutActionView.inputTexField.keyboardType = UIKeyboardTypeNumberPad;
         _inPutActionView.delegate = self;
     }
     return _inPutActionView;

@@ -21,6 +21,8 @@
 #import "HPGoogleMapView.h"
 #import "HPParkCostDetailViewController.h"
 #import "HPCarParkCostInfoViewController.h"
+#import "HPHomeSearchBtn.h"
+#import "HPHomePageSearchViewController.h"
 
 
 
@@ -35,7 +37,7 @@
 @property (nonatomic, strong) HPBaseBaiduMapViewController * baiduMapView;
 @property (nonatomic, strong) HPGoogleMapView * googleMapView;
 
-@property (nonatomic, strong) UISearchBar * searchBar;
+@property (nonatomic, strong) HPHomeSearchBtn * searchBar;
 
 
 @property (nonatomic, strong) UIButton * curentLocationBtn;
@@ -105,7 +107,7 @@
 {
     if (_sysActionView == nil)
     {
-        _sysActionView = [[HPSJSySActionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 180 - 49, SCREEN_WIDTH, 180)];
+        _sysActionView = [[HPSJSySActionView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT   - 180 - kTabBarHeight-kNavBarHeight , SCREEN_WIDTH, 180)];
         _sysActionView.delegate = self;
     }
     return _sysActionView;
@@ -125,16 +127,16 @@
     [self setMessageRightItem];
     [self.view addSubview:self.sysActionView];
     [_sysActionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset(-49);
+        make.bottom.equalTo(self.view).offset(-kTabBarHeight);
         make.left.right.equalTo(self.view);
         make.height.equalTo(@(180));
     }];
 
     [self setUpMapView];
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 56 - 56, 22)];
-    self.searchBar.searchBarStyle = UISearchBarStyleDefault;
-    self.searchBar.placeholder = @"请输入您的目的地";
+    self.searchBar = [[HPHomeSearchBtn alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 56 - 16, 30)];
+    [self.searchBar addTarget:self action:@selector(searchBarClickAction:) forControlEvents:UIControlEventTouchUpInside];
+    
     self.navigationItem.titleView  = self.searchBar;
 
 
@@ -151,7 +153,7 @@
     [self.view addSubview:self.altView];
     
     [self.altView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(64 +15);
+        make.top.equalTo(self.view).offset(15);
         make.width.equalTo(@(SCREEN_WIDTH - 60));
         make.centerX.equalTo(self.view);
         make.height.equalTo(@(40));
@@ -168,7 +170,7 @@
 -(void)setUpMapView
 {
  
-    if (isChineseLanguage)
+    if (!isGoogleMap)
     {
         [self.view addSubview:self.baiduMapView];
     }
@@ -267,14 +269,14 @@
 //当前定位
 -(void)curentLocationBtnAction:(UIButton *)sender
 {
-
-    if (isChineseLanguage)
+    if (!isGoogleMap)
     {
         [self.baiduMapView.mapView setCenterCoordinate:self.baiduMapView.userLocation.location.coordinate animated:YES]; //当前地图的中心点
     }
     else
     {
-        self.googleMapView.googleMapView.camera = [[GMSCameraPosition alloc] initWithTarget:self.googleMapView.currentLocation.coordinate zoom:15 bearing:0 viewingAngle:0];
+        [self.googleMapView.googleMapView animateToCameraPosition:[[GMSCameraPosition alloc] initWithTarget:self.googleMapView.currentLocation.coordinate zoom:15 bearing:0 viewingAngle:0]];
+     
     }
 }
 #pragma mark - 实名认证
@@ -302,7 +304,7 @@
     if (segmentView == self.bigSegment)
     {
         CGFloat leavel = 0;
-        if (isChineseLanguage)
+        if (!isGoogleMap)
         {
             leavel = self.baiduMapView.mapView.zoomLevel;
         }
@@ -321,7 +323,7 @@
         {
             leavel --;
         }
-        if (isChineseLanguage)
+        if (!isGoogleMap)
         {
             [self.baiduMapView.mapView setZoomLevel:leavel];
         }
@@ -331,7 +333,8 @@
             
             GMSMutableCameraPosition * mutcam =  [[GMSMutableCameraPosition alloc] initWithTarget:position.target zoom:position.zoom bearing:position.bearing viewingAngle:position.viewingAngle];
              mutcam.zoom = leavel;
-            self.googleMapView.googleMapView.camera = mutcam;
+            
+            [self.googleMapView.googleMapView animateToCameraPosition:mutcam];
             self.googleMapView.currentZoom = leavel;
         }
     }
@@ -360,7 +363,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (isChineseLanguage)
+    if (!isGoogleMap)
     {
         [self.baiduMapView viewWillAppear];
     }
@@ -369,7 +372,7 @@
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (isChineseLanguage)
+    if (!isGoogleMap)
     {
         [self.baiduMapView viewDisAppear];
     }
@@ -459,6 +462,11 @@
         bindcarVc.view.superview.backgroundColor = [UIColor clearColor];
     }];
 }
-
-
+#pragma mark - 搜索
+-(void)searchBarClickAction:(UIButton *)sender
+{
+    HPHomePageSearchViewController * search = [HPHomePageSearchViewController new];
+    search.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:search animated:YES];
+}
 @end

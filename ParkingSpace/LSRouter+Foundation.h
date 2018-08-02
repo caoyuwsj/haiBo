@@ -130,12 +130,17 @@ static BOOL USE_SIMULATE = NO;
 #define isIPhoneX                  (SCREEN_HEIGHT == 812)
 
 #define kTabBarHeight (isIPhoneX ? 83 : 49)
-
-#define isChineseLanguage (!kGetLocalLang || [kGetLocalLang isEqualToString:@"zh_CN"])
+#define kNavBarHeight (isIPhoneX ? 88 : 64)
+//地图切换宏
+#define isGoogleMap ([kGetLocalLang isEqualToString:@"en_US"])
 
 //封装了一个宏 用来方便输入文字--实际是文字对应的key
 #define CustomStr(key) [(AppDelegate *)[[UIApplication sharedApplication] delegate] showText:(key)]
 
+#define kTextColor_3 [UIColor colorWithHexString:@"#333333"]
+#define kTextColor_54 [UIColor colorWithWhite:0.54 alpha:1.0]
+#define kTextColor_9 [UIColor colorWithHexString:@"#999999"]
+#define kTextColor_27 [UIColor colorWithWhite:0.27 alpha:1.0]
 /*
  全局单例
  */

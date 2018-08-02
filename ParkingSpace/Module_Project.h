@@ -15,6 +15,9 @@
 #import "HPBaseTableViewViewController.h"
 
 #import "HPBaseCardCell.h"
+#import "TYPageControl.h"
+#import "TYCyclePagerView.h"
+#import "TYCyclePagerViewCell.h"
 
 #import "ToolHeader.h"
 #import "HPBaseAltActionViewController.h"
